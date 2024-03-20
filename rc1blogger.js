@@ -22,7 +22,7 @@ function showrecentcomments(json) {
     commentContent = commentContent.replace(/<\S[^>]*>/g, "");
     document.write('<div class="rcw-comments">');
     if (m_rc == true) document.write('ở ' + months[parseInt(month, 10) - 1] + ' ' + day + ' ');
-    document.write('<a href="' + commentLink + '">' + entry.author[0].name.$t + '</a> vừa bình luận rằng ');
+    document.write('<a style="color: #212121;" href="' + commentLink + '">' + entry.author[0].name.$t + '</a> vừa bình luận: ');
     if (n_rc == true) document.write('<a href="' + postLink + '">' + postTitle + '</a>');
     document.write('</div>');
   }
