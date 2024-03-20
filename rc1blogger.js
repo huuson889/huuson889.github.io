@@ -45,7 +45,7 @@ function showrecentcomments(json) {
         l_rc = l_rc.replace(re, "");
         document.write('<div class="rcw-comments">');
         if (m_rc == true) document.write('tại ' + k_rc[parseInt(i_rc, 10)] + ' ' + j_rc + ' ');
-        document.write('<a href="' + c_rc + '">' + b_rc.author[0].name.$t + '</a> đã bình luận');
+        document.write('<a href="' + c_rc + '">' + b_rc.author[0].name.$t + '</a> vừa bình luận');
         if (n_rc == true) document.write(' tại ' + f_rc);
 
         if (o_rc == 0) {
