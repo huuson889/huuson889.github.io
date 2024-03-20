@@ -4,7 +4,8 @@ function showrecentcomments(json) {
     var commentLink = entry.link.find(link => link.rel == 'alternate').href;
     commentLink = commentLink.replace("#", "#comment-");
     var postLink = commentLink.split("#")[0];
-    var postTitle = entry['post.title'];
+    var postTitleElement = entry.content.$t.match(/<span\s+class="post-title">(.*?)<\/span>/);
+    var postTitle = postTitleElement ? postTitleElement[1] : '';
     var commentContent = entry.content ? entry.content.$t : entry.summary ? entry.summary.$t : "";
     commentContent = commentContent.replace(/<\S[^>]*>/g, "");
     document.write('<div class="rcw-comments">');
