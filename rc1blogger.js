@@ -1,3 +1,5 @@
+//Tomato Project. Link gốc: https://madtomatoes.com/recent-comments-widget-for-blogger/
+
 function showrecentcomments(json) {
   for (var i = 0; i < a_rc; i++) {
     var entry = json.feed.entry[i];
