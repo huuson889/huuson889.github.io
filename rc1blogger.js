@@ -19,20 +19,9 @@ function showrecentcomments(json) {
     var commentContent = ("content" in entry) ? entry.content.$t : ("summary" in entry) ? entry.summary.$t : "";
     commentContent = commentContent.replace(/<\S[^>]*>/g, "");
     document.write('<div class="rcw-comments">');
-    if (m_rc == true) document.write('tại ' + months[parseInt(month, 10) - 1] + ' ' + day + ' ');
-    document.write('<a href="' + commentLink + '">' + entry.author[0].name.$t + '</a> vừa bình luận');
-    if (n_rc == true) document.write(' tại <a href="' + postLink + '">' + postTitle + '</a>');
-    if (o_rc > 0) {
-      document.write(': ');
-      if (commentContent.length < o_rc) {
-        document.write('<i>' + commentContent + '</i>');
-      } else {
-        var trimmedContent = commentContent.substring(0, o_rc);
-        var lastSpace = trimmedContent.lastIndexOf(" ");
-        trimmedContent = trimmedContent.substring(0, lastSpace);
-        document.write('<i>' + trimmedContent + '&hellip;</i>');
-      }
-    }
+    if (m_rc == true) document.write('ở ' + months[parseInt(month, 10) - 1] + ' ' + day + ' ');
+    document.write('<a href="' + commentLink + '">' + entry.author[0].name.$t + '</a> vừa bình luận rằng');
+    if (n_rc == true) document.write('<a href="' + postLink + '">' + postTitle + '</a>');
     document.write('</div>');
   }
 }
