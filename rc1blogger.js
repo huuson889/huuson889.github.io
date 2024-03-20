@@ -53,15 +53,13 @@ function showrecentcomments(json) {
         } else {
             document.write(': ');
             if (l_rc.length < o_rc) {
-                document.write('<i>');
                 document.write(l_rc);
-                document.write('</i></div>');
+                document.write('</div>');
             } else {
-                document.write('<i>');
                 l_rc = l_rc.substring(0, o_rc);
                 var p_rc = l_rc.lastIndexOf(" ");
                 l_rc = l_rc.substring(0, p_rc);
-                document.write(l_rc + '&hellip;</i></div>');
+                document.write(l_rc + '&hellip;</div>');
                 document.write('');
             }
         }
