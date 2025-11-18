@@ -5,75 +5,20 @@ var no=20;var hidesnowtime=0;var snowdistance='pageheight';var ie4up=(document.a
 
 
 // santa-animation.js
-(function() {
-  'use strict';
-
-  // Hàm khởi tạo animation
-  function initSantaAnimation() {
-    // Tạo img element
-    const haloImg = document.createElement('img');
-    haloImg.id = 'halo';
-    haloImg.title = 'Happy Noel';
-    haloImg.style.cssText = 'cursor:pointer;position:fixed;z-index:99999';
-    haloImg.height = 120;
-    haloImg.src = 'https://lh3.ggpht.com/-LSDhJFNSG-E/VnQh0rSGAHI/AAAAAAAADoo/3FdK8o-hZ6A/s1600/tuan_loc_cho_qua_cua_ong_gia_noel_anh.gif';
-    
-    // Thêm vào body
-    document.body.appendChild(haloImg);
-
-    // Hàm animate đơn giản (thay thế jQuery animate)
-    function animateElement(element, targetX, targetY, duration) {
-      const startX = parseInt(element.style.left) || 0;
-      const startY = parseInt(element.style.top) || 0;
-      const startTime = performance.now();
-
-      function animate(currentTime) {
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        
-        // Easing function (ease-in-out)
-        const easeProgress = progress < 0.5 
-          ? 2 * progress * progress 
-          : 1 - Math.pow(-2 * progress + 2, 2) / 2;
-
-        element.style.left = (startX + (targetX - startX) * easeProgress) + 'px';
-        element.style.top = (startY + (targetY - startY) * easeProgress) + 'px';
-
-        if (progress < 1) {
-          requestAnimationFrame(animate);
-        }
-      }
-
-      requestAnimationFrame(animate);
-    }
-
-    // Hàm di chuyển ngẫu nhiên
-    function moveRandomly() {
-      const maxX = window.innerWidth - haloImg.width;
-      const maxY = window.innerHeight - haloImg.height;
-      const randomX = Math.ceil(Math.random() * maxX);
-      const randomY = Math.ceil(Math.random() * maxY);
-      
-      animateElement(haloImg, randomX, randomY, 5000);
-    }
-
-    // Bắt đầu animation sau mỗi 5 giây
-    setInterval(moveRandomly, 5000);
-    
-    // Chạy lần đầu tiên ngay lập tức
-    moveRandomly();
-
-    // Xử lý sự kiện click
-    haloImg.addEventListener('click', function() {
-      window.open('https://lh3.ggpht.com/-LSDhJFNSG-E/VnQh0rSGAHI/AAAAAAAADoo/3FdK8o-hZ6A/s1600/tuan_loc_cho_qua_cua_ong_gia_noel_anh.gif', '_blank');
-    });
-  }
-
-  // Khởi chạy khi DOM đã sẵn sàng
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initSantaAnimation);
-  } else {
-    initSantaAnimation();
-  }
-
-})();
+document.addEventListener('DOMContentLoaded', function() {
+  document.body.innerHTML += '<img id="halo" title="Happy Noel" style="cursor:pointer;position:fixed;z-index:99999" height="120" src="https://lh3.ggpht.com/-LSDhJFNSG-E/VnQh0rSGAHI/AAAAAAAADoo/3FdK8o-hZ6A/s1600/tuan_loc_cho_qua_cua_ong_gia_noel_anh.gif"/>';
+  
+  var halo = document.getElementById('halo');
+  
+  setInterval(function() {
+    var x = Math.ceil(Math.random() * window.innerWidth);
+    var y = Math.ceil(Math.random() * window.innerHeight);
+    halo.style.transition = 'all 5s';
+    halo.style.left = x + 'px';
+    halo.style.top = y + 'px';
+  }, 5000);
+  
+  halo.onclick = function() {
+    window.open('https://lh3.ggpht.com/-LSDhJFNSG-E/VnQh0rSGAHI/AAAAAAAADoo/3FdK8o-hZ6A/s1600/tuan_loc_cho_qua_cua_ong_gia_noel_anh.gif', '');
+  };
+});
