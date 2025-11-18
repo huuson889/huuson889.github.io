@@ -212,7 +212,11 @@
   function initBackgroundMusic() {
     // DANH SÁCH VIDEO ID YOUTUBE - THAY ĐỔI Ở ĐÂY
     var youtubePlaylist = [
-      'qqwRkhwrJek',  // Jingle Bells
+      'yXQViqx6GMY',  // Jingle Bells
+      '2gmiSPMHrWQ',  // All I Want for Christmas
+      'E8gmARGvPlI',  // Last Christmas
+      'aAkMkVFwAoo',  // Feliz Navidad
+      'hwacxSnc4tI'   // Silent Night
       // Thêm các video ID khác vào đây
     ];
     
@@ -220,14 +224,7 @@
     var randomIndex = Math.floor(Math.random() * youtubePlaylist.length);
     var videoId = youtubePlaylist[randomIndex];
     
-    // Tạo iframe YouTube (ẩn)
-    var musicFrame = document.createElement('iframe');
-    musicFrame.id = 'music-iframe';
-    musicFrame.allow = 'autoplay';
-    musicFrame.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&loop=1&playlist=' + videoId + '&controls=0&showinfo=0&rel=0&modestbranding=1&volume=60';
-    document.body.appendChild(musicFrame);
-    
-    // Tạo nút điều khiển
+    // Tạo nút điều khiển trước
     var controlBtn = document.createElement('button');
     controlBtn.id = 'music-control-btn';
     controlBtn.innerHTML = '🔊';
@@ -236,67 +233,94 @@
     
     var isMuted = false;
     var player = null;
+    var isPlayerReady = false;
     
-    // Load YouTube IFrame API
-    var tag = document.createElement('script');
-    tag.src = 'https://www.youtube.com/iframe_api';
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    // Tạo iframe YouTube (ẩn)
+    var musicFrame = document.createElement('div');
+    musicFrame.id = 'music-iframe';
+    document.body.appendChild(musicFrame);
     
-    // Callback khi API sẵn sàng
-    window.onYouTubeIframeAPIReady = function() {
-      player = new YT.Player('music-iframe', {
-        events: {
-          'onReady': function(event) {
-            event.target.setVolume(60); // Đặt âm lượng 60%
-            event.target.playVideo();
+    // Load YouTube IFrame API nếu chưa có
+    if (!window.YT) {
+      var tag = document.createElement('script');
+      tag.src = 'https://www.youtube.com/iframe_api';
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    }
+    
+    // Khởi tạo player
+    function initPlayer() {
+      if (window.YT && window.YT.Player) {
+        player = new YT.Player('music-iframe', {
+          height: '1',
+          width: '1',
+          videoId: videoId,
+          playerVars: {
+            autoplay: 1,
+            loop: 1,
+            playlist: videoId,
+            controls: 0,
+            showinfo: 0,
+            rel: 0,
+            modestbranding: 1
           },
-          'onStateChange': function(event) {
-            // Tự động phát video tiếp theo khi kết thúc
-            if (event.data === YT.PlayerState.ENDED) {
-              randomIndex = Math.floor(Math.random() * youtubePlaylist.length);
-              player.loadVideoById(youtubePlaylist[randomIndex]);
+          events: {
+            'onReady': function(event) {
+              isPlayerReady = true;
+              event.target.setVolume(60);
+              
+              // Kiểm tra trạng thái đã lưu
+              var savedMuteState = localStorage.getItem('noelMusicMuted');
+              if (savedMuteState === 'true') {
+                event.target.mute();
+                controlBtn.innerHTML = '🔇';
+                isMuted = true;
+              } else {
+                event.target.playVideo();
+              }
+            },
+            'onStateChange': function(event) {
+              if (event.data === YT.PlayerState.ENDED) {
+                randomIndex = Math.floor(Math.random() * youtubePlaylist.length);
+                player.loadVideoById(youtubePlaylist[randomIndex]);
+              }
             }
           }
-        }
-      });
-    };
+        });
+      } else {
+        setTimeout(initPlayer, 100);
+      }
+    }
+    
+    // Callback khi API sẵn sàng
+    if (window.YT && window.YT.Player) {
+      initPlayer();
+    } else {
+      window.onYouTubeIframeAPIReady = initPlayer;
+    }
     
     // Xử lý nút bấm
     controlBtn.addEventListener('click', function() {
-      if (!player) return;
+      if (!player || !isPlayerReady) {
+        console.log('Player chưa sẵn sàng');
+        return;
+      }
       
       if (isMuted) {
         player.unMute();
         player.setVolume(60);
+        player.playVideo();
         controlBtn.innerHTML = '🔊';
         controlBtn.title = 'Tắt nhạc';
         isMuted = false;
+        localStorage.setItem('noelMusicMuted', 'false');
       } else {
         player.mute();
         controlBtn.innerHTML = '🔇';
         controlBtn.title = 'Bật nhạc';
         isMuted = true;
+        localStorage.setItem('noelMusicMuted', 'true');
       }
-    });
-    
-    // Lưu trạng thái mute
-    var savedMuteState = localStorage.getItem('noelMusicMuted');
-    if (savedMuteState === 'true') {
-      setTimeout(function() {
-        if (player && player.mute) {
-          player.mute();
-          controlBtn.innerHTML = '🔇';
-          isMuted = true;
-        }
-      }, 1000);
-    }
-    
-    // Lưu trạng thái khi thay đổi
-    controlBtn.addEventListener('click', function() {
-      setTimeout(function() {
-        localStorage.setItem('noelMusicMuted', isMuted.toString());
-      }, 100);
     });
   }
   
@@ -321,4 +345,3 @@
   });
   
 })();
-
