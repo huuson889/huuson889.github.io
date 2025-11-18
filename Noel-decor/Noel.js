@@ -212,11 +212,7 @@
   function initBackgroundMusic() {
     // DANH SÁCH VIDEO ID YOUTUBE - THAY ĐỔI Ở ĐÂY
     var youtubePlaylist = [
-      'yXQViqx6GMY',  // Jingle Bells
-      '2gmiSPMHrWQ',  // All I Want for Christmas
-      'E8gmARGvPlI',  // Last Christmas
-      'aAkMkVFwAoo',  // Feliz Navidad
-      'hwacxSnc4tI'   // Silent Night
+      'qqwRkhwrJek',  // Jingle Bells
       // Thêm các video ID khác vào đây
     ];
     
@@ -325,3 +321,4 @@
   });
   
 })();
+
