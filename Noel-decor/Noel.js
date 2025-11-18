@@ -16,6 +16,10 @@
     #e_tientv_bottom_left { display: none; position: fixed; z-index: 9999; bottom: 20px; left: 20px; pointer-events: none; }
     .snow-flake { position: absolute; z-index: 9998; visibility: visible; top: 15px; left: 15px; font-size: 18px; color: #d9d9d9; pointer-events: none; will-change: transform; }
     #halo { cursor: pointer; position: fixed; z-index: 99999; height: 80px; transition: all 5s ease-in-out; }
+    /* Kích thước Santa trên mobile */
+    @media (max-width: 767px) {
+      #halo { height: 50px; } /* Thay đổi số này để điều chỉnh kích thước trên điện thoại */
+    }
     @media (min-width: 992px) {
       #e_tientv_left, #e_tientv_right, #e_tientv_footer, #e_tientv_bottom_left { display: block; }
     }
@@ -129,8 +133,9 @@
     santa.style.top = '0px';
     
     function moveSanta() {
-      var maxX = window.innerWidth - 80;
-      var maxY = window.innerHeight - 80;
+      var santaSize = window.innerWidth <= 767 ? 50 : 80; // Kích thước Santa thay đổi theo màn hình
+      var maxX = window.innerWidth - santaSize;
+      var maxY = window.innerHeight - santaSize;
       var x = Math.floor(Math.random() * maxX);
       var y = Math.floor(Math.random() * maxY);
       santa.style.left = x + 'px';
