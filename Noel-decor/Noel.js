@@ -88,11 +88,12 @@
   // Thêm các element trang trí khi DOM ready
   function addDecorElements() {
     var container = document.createElement('div');
+    container.id = 'noel-decor-container';
     container.innerHTML = `
-      <img id="e_tientv_left" src="https://huuson889.github.io/Noel-decor/topleft.png" alt=""/>
-      <img id="e_tientv_right" src="https://huuson889.github.io/Noel-decor/topright.png" alt=""/>
+      <img id="e_tientv_left" src="https://huuson889.github.io/Noel-decor/topleft.png" alt="" draggable="false"/>
+      <img id="e_tientv_right" src="https://huuson889.github.io/Noel-decor/topright.png" alt="" draggable="false"/>
       <div id="e_tientv_footer"></div>
-      <img id="e_tientv_bottom_left" src="https://huuson889.github.io/Noel-decor/bottomleft.png" alt=""/>
+      <img id="e_tientv_bottom_left" src="https://huuson889.github.io/Noel-decor/bottomleft.png" alt="" draggable="false"/>
     `;
     document.body.appendChild(container);
   }
@@ -263,7 +264,7 @@
           events: {
             'onReady': function(event) {
               isPlayerReady = true;
-              event.target.setVolume(30);
+              event.target.setVolume(60);
               
               // Kiểm tra trạng thái đã lưu
               var savedMuteState = localStorage.getItem('noelMusicMuted');
@@ -304,7 +305,7 @@
       
       if (isMuted) {
         player.unMute();
-        player.setVolume(30);
+        player.setVolume(60);
         player.playVideo();
         controlBtn.innerHTML = '🔊';
         controlBtn.title = 'Tắt nhạc';
@@ -341,6 +342,3 @@
   });
   
 })();
-
-
-
