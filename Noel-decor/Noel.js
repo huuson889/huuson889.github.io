@@ -267,7 +267,7 @@
           events: {
             'onReady': function(event) {
               isPlayerReady = true;
-              event.target.setVolume(60);
+              event.target.setVolume(30);
               
               // Kiểm tra trạng thái đã lưu
               var savedMuteState = localStorage.getItem('noelMusicMuted');
@@ -345,3 +345,4 @@
   });
   
 })();
+
