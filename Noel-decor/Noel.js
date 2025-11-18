@@ -2,6 +2,19 @@
 (function() {
   'use strict';
   
+  // Kiểm tra thời gian: chỉ chạy từ 1/10 đến 30/12
+  var currentDate = new Date();
+  var currentMonth = currentDate.getMonth() + 1; // getMonth() trả về 0-11, nên +1
+  var currentDay = currentDate.getDate();
+  
+  // Chỉ chạy từ tháng 10, 11, 12 (và đến ngày 30/12)
+  var isValidPeriod = (currentMonth === 10 || currentMonth === 11 || currentMonth === 12 );
+  
+  if (!isValidPeriod) {
+    console.log('Trang trí Noel chỉ hiển thị từ 1/10 đến 30/12');
+    return; // Dừng script nếu không trong khoảng thời gian
+  }
+  
   // Kiểm tra xem đã chạy chưa để tránh duplicate
   if (window.noelDecorLoaded) return;
   window.noelDecorLoaded = true;
