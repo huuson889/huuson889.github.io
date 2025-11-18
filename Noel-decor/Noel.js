@@ -308,7 +308,7 @@
       
       if (isMuted) {
         player.unMute();
-        player.setVolume(60);
+        player.setVolume(30);
         player.playVideo();
         controlBtn.innerHTML = '🔊';
         controlBtn.title = 'Tắt nhạc';
@@ -345,4 +345,5 @@
   });
   
 })();
+
 
