@@ -8,7 +8,8 @@
   var currentDay = currentDate.getDate();
   
   // Chỉ chạy từ tháng 10, 11, 12 (và đến ngày 30/12)
-  var isValidPeriod = (currentMonth === 10 || currentMonth === 11 || currentMonth === 12 );
+  var isValidPeriod = (currentMonth === 10 || currentMonth === 11 || 
+                       (currentMonth === 12 && currentDay <= 30));
   
   if (!isValidPeriod) {
     console.log('Trang trí Noel chỉ hiển thị từ 1/10 đến 30/12');
@@ -32,6 +33,51 @@
     /* Kích thước Santa trên mobile */
     @media (max-width: 767px) {
       #halo { height: 50px; } /* Thay đổi số này để điều chỉnh kích thước trên điện thoại */
+    }
+    /* Nút điều khiển nhạc */
+    #music-control-btn {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      z-index: 100000;
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      font-size: 20px;
+      color: white;
+    }
+    #music-control-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    }
+    #music-control-btn:active {
+      transform: scale(0.95);
+    }
+    #music-iframe {
+      position: fixed;
+      bottom: -500px;
+      left: -500px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+      pointer-events: none;
+    }
+    @media (max-width: 767px) {
+      #music-control-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+        bottom: 15px;
+        left: 15px;
+      }
     }
     @media (min-width: 992px) {
       #e_tientv_left, #e_tientv_right, #e_tientv_footer, #e_tientv_bottom_left { display: block; }
@@ -162,17 +208,115 @@
     setInterval(moveSanta, 5000);
   }
   
+  // ===== PHẦN 4: Nhạc nền Background =====
+  function initBackgroundMusic() {
+    // DANH SÁCH VIDEO ID YOUTUBE - THAY ĐỔI Ở ĐÂY
+    var youtubePlaylist = [
+      'yXQViqx6GMY',  // Jingle Bells
+      '2gmiSPMHrWQ',  // All I Want for Christmas
+      'E8gmARGvPlI',  // Last Christmas
+      'aAkMkVFwAoo',  // Feliz Navidad
+      'hwacxSnc4tI'   // Silent Night
+      // Thêm các video ID khác vào đây
+    ];
+    
+    // Chọn ngẫu nhiên 1 video từ playlist
+    var randomIndex = Math.floor(Math.random() * youtubePlaylist.length);
+    var videoId = youtubePlaylist[randomIndex];
+    
+    // Tạo iframe YouTube (ẩn)
+    var musicFrame = document.createElement('iframe');
+    musicFrame.id = 'music-iframe';
+    musicFrame.allow = 'autoplay';
+    musicFrame.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&loop=1&playlist=' + videoId + '&controls=0&showinfo=0&rel=0&modestbranding=1&volume=60';
+    document.body.appendChild(musicFrame);
+    
+    // Tạo nút điều khiển
+    var controlBtn = document.createElement('button');
+    controlBtn.id = 'music-control-btn';
+    controlBtn.innerHTML = '🔊';
+    controlBtn.title = 'Tắt/Bật nhạc Noel';
+    document.body.appendChild(controlBtn);
+    
+    var isMuted = false;
+    var player = null;
+    
+    // Load YouTube IFrame API
+    var tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    
+    // Callback khi API sẵn sàng
+    window.onYouTubeIframeAPIReady = function() {
+      player = new YT.Player('music-iframe', {
+        events: {
+          'onReady': function(event) {
+            event.target.setVolume(60); // Đặt âm lượng 60%
+            event.target.playVideo();
+          },
+          'onStateChange': function(event) {
+            // Tự động phát video tiếp theo khi kết thúc
+            if (event.data === YT.PlayerState.ENDED) {
+              randomIndex = Math.floor(Math.random() * youtubePlaylist.length);
+              player.loadVideoById(youtubePlaylist[randomIndex]);
+            }
+          }
+        }
+      });
+    };
+    
+    // Xử lý nút bấm
+    controlBtn.addEventListener('click', function() {
+      if (!player) return;
+      
+      if (isMuted) {
+        player.unMute();
+        player.setVolume(60);
+        controlBtn.innerHTML = '🔊';
+        controlBtn.title = 'Tắt nhạc';
+        isMuted = false;
+      } else {
+        player.mute();
+        controlBtn.innerHTML = '🔇';
+        controlBtn.title = 'Bật nhạc';
+        isMuted = true;
+      }
+    });
+    
+    // Lưu trạng thái mute
+    var savedMuteState = localStorage.getItem('noelMusicMuted');
+    if (savedMuteState === 'true') {
+      setTimeout(function() {
+        if (player && player.mute) {
+          player.mute();
+          controlBtn.innerHTML = '🔇';
+          isMuted = true;
+        }
+      }, 1000);
+    }
+    
+    // Lưu trạng thái khi thay đổi
+    controlBtn.addEventListener('click', function() {
+      setTimeout(function() {
+        localStorage.setItem('noelMusicMuted', isMuted.toString());
+      }, 100);
+    });
+  }
+  
   // ===== KHỞI ĐỘNG =====
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function() {
       addDecorElements();
       initSnow();
       initSanta();
+      initBackgroundMusic();
     });
   } else {
     addDecorElements();
     initSnow();
     initSanta();
+    initBackgroundMusic();
   }
   
   // Cleanup khi trang bị đóng/reload
