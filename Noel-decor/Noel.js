@@ -6,7 +6,7 @@ var no=20;var hidesnowtime=0;var snowdistance='pageheight';var ie4up=(document.a
 /*Code gốc trang trí ông già Noel tại (có dùng claude.ai chuyển đổi): https://www.tranbadat.com/2015/12/trang-tri-giang-sinh-voi-ong-gia-noel-cho-blogspot.html*/
 // santa-animation.js
 document.addEventListener('DOMContentLoaded', function() {
-  document.body.innerHTML += '<img id="halo" title="Happy Noel" style="cursor:pointer;position:fixed;z-index:99999" height="80" src="https:huuson889.github.io/Noel-decor/ong-gia.gif"/>';
+  document.body.innerHTML += '<img id="halo" title="Happy Noel" style="cursor:pointer;position:fixed;z-index:99999" height="80" src="https://huuson889.github.io/Noel-decor/ong-gia.gif"/>';
   
   var halo = document.getElementById('halo');
   
@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
     halo.style.top = y + 'px';
   }, 5000);
 });
+
 
 
 
