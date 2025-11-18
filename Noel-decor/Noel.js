@@ -17,11 +17,8 @@ document.addEventListener('DOMContentLoaded', function() {
     halo.style.left = x + 'px';
     halo.style.top = y + 'px';
   }, 5000);
-  
-  halo.onclick = function() {
-    window.open('https://huuson889.github.io/Noel-decor/ong-gia.gif', '');
-  };
 });
+
 
 
 
