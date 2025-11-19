@@ -8,6 +8,11 @@ body {
 	transition:background-color linear 5s;
 	overflow-x:hidden;
 }
+
+.nut-bam {
+	margin-bottom: 12%;
+}
+
 .container {
 	display: none;
 }
