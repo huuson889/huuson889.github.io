@@ -1,22 +1,20 @@
-/*Code trang trí Noel 4 góc + tuyết rơi + ông già Noel - Đã tối ưu*/
+/*Code trang trí Noel 4 góc + tuyết rơi + ông già Noel - Santa bay ngang*/
 (function() {
   'use strict';
   
   // Kiểm tra thời gian: chỉ chạy từ 1/10 đến 30/12
   var currentDate = new Date();
-  var currentMonth = currentDate.getMonth() + 1; // getMonth() trả về 0-11, nên +1
+  var currentMonth = currentDate.getMonth() + 1;
   var currentDay = currentDate.getDate();
   
-  // Chỉ chạy từ tháng 10, 11, 12 (và đến ngày 30/12)
   var isValidPeriod = (currentMonth === 10 || currentMonth === 11 || 
                        (currentMonth === 12 && currentDay <= 30));
   
   if (!isValidPeriod) {
     console.log('Trang trí Noel chỉ hiển thị từ 1/10 đến 30/12');
-    return; // Dừng script nếu không trong khoảng thời gian
+    return;
   }
   
-  // Kiểm tra xem đã chạy chưa để tránh duplicate
   if (window.noelDecorLoaded) return;
   window.noelDecorLoaded = true;
   
@@ -29,12 +27,17 @@
     #e_tientv_footer { display: none; position: fixed; z-index: 9999; bottom: -50px; left: 0; width: 100%; height: 104px; background: url(https://huuson889.github.io/Noel-decor/ft.png) repeat-x bottom left; pointer-events: none; }
     #e_tientv_bottom_left { display: none; position: fixed; z-index: 9999; bottom: 20px; left: 20px; pointer-events: none; }
     .snow-flake { position: absolute; z-index: 9998; visibility: visible; top: 15px; left: 15px; font-size: 18px; color: #d9d9d9; pointer-events: none; will-change: transform; }
-    #halo { cursor: pointer; position: fixed; z-index: 99999; height: 80px; transition: all 5s ease-in-out; }
-    /* Kích thước Santa trên mobile */
-    @media (max-width: 767px) {
-      #halo { height: 50px; } /* Thay đổi số này để điều chỉnh kích thước trên điện thoại */
+    #halo { 
+      cursor: pointer; 
+      position: fixed; 
+      z-index: 99999; 
+      height: 80px; 
+      pointer-events: none;
+      will-change: transform;
     }
-    /* Nút điều khiển nhạc */
+    @media (max-width: 767px) {
+      #halo { height: 50px; }
+    }
     #music-control-btn {
       position: fixed;
       bottom: 20px;
@@ -85,7 +88,6 @@
   `;
   document.head.appendChild(style);
   
-  // Thêm các element trang trí khi DOM ready
   function addDecorElements() {
     var container = document.createElement('div');
     container.id = 'noel-decor-container';
@@ -179,7 +181,7 @@
     });
   }
   
-  // ===== PHẦN 3: Ông già Noel =====
+  // ===== PHẦN 3: Ông già Noel bay ngang =====
   function initSanta() {
     var santa = document.createElement('img');
     santa.id = 'halo';
@@ -188,40 +190,71 @@
     santa.alt = 'Santa Claus';
     document.body.appendChild(santa);
     
-    // Đặt vị trí ban đầu
-    santa.style.right = '0px';
-    santa.style.top = '0px';
+    var santaData = {
+      x: window.innerWidth,
+      y: 0,
+      targetY: 0,
+      speed: 2,
+      waveAmplitude: 30,
+      waveSpeed: 0.03,
+      wavePhase: 0
+    };
     
-    function moveSanta() {
-      var santaSize = window.innerWidth <= 767 ? 50 : 80; // Kích thước Santa thay đổi theo màn hình
-      var maxX = window.innerWidth - santaSize;
-      var maxY = window.innerHeight - santaSize;
-      var x = Math.floor(Math.random() * maxX);
-      var y = Math.floor(Math.random() * maxY);
-      santa.style.left = x + 'px';
-      santa.style.top = y + 'px';
+    function animateSanta() {
+      var santaSize = window.innerWidth <= 767 ? 50 : 80;
+      var screenHeight = window.innerHeight;
+      
+      // Di chuyển từ phải sang trái
+      santaData.x -= santaData.speed;
+      
+      // Tạo hiệu ứng lượn sóng
+      santaData.wavePhase += santaData.waveSpeed;
+      var waveOffset = Math.sin(santaData.wavePhase) * santaData.waveAmplitude;
+      
+      // Cập nhật vị trí Y với hiệu ứng lượn
+      santaData.y = santaData.targetY + waveOffset;
+      
+      // Áp dụng vị trí
+      santa.style.left = santaData.x + 'px';
+      santa.style.top = santaData.y + 'px';
+      
+      // Khi Santa bay ra khỏi màn hình bên trái
+      if (santaData.x < -santaSize) {
+        // Đặt lại vị trí bên phải
+        santaData.x = window.innerWidth + 20;
+        // Random vị trí Y mới (ở giữa màn hình, tránh quá trên hoặc quá dưới)
+        santaData.targetY = (screenHeight * 0.2) + Math.random() * (screenHeight * 0.6 - santaSize);
+        // Random tốc độ bay
+        santaData.speed = 1.5 + Math.random() * 1.5;
+        // Random biên độ sóng
+        santaData.waveAmplitude = 20 + Math.random() * 40;
+        // Random tốc độ sóng
+        santaData.waveSpeed = 0.02 + Math.random() * 0.03;
+      }
+      
+      requestAnimationFrame(animateSanta);
     }
     
-    // Di chuyển lần đầu sau 1 giây
-    setTimeout(moveSanta, 1000);
+    // Bắt đầu animation
+    animateSanta();
     
-    // Di chuyển định kỳ mỗi 5 giây
-    setInterval(moveSanta, 5000);
+    // Cập nhật khi resize màn hình
+    window.addEventListener('resize', function() {
+      if (santaData.x < -100) {
+        santaData.x = window.innerWidth + 20;
+      }
+    });
   }
   
   // ===== PHẦN 4: Nhạc nền Background =====
   function initBackgroundMusic() {
-    // DANH SÁCH VIDEO ID YOUTUBE - THAY ĐỔI Ở ĐÂY
     var youtubePlaylist = [
-      '3CWJNqyub3o',  // Jingle Bells
-      // Thêm các video ID khác vào đây
+      '3CWJNqyub3o',
     ];
     
-    // Chọn ngẫu nhiên 1 video từ playlist
     var randomIndex = Math.floor(Math.random() * youtubePlaylist.length);
     var videoId = youtubePlaylist[randomIndex];
     
-    // Tạo nút điều khiển trước
     var controlBtn = document.createElement('button');
     controlBtn.id = 'music-control-btn';
     controlBtn.innerHTML = '🔊';
@@ -232,12 +265,10 @@
     var player = null;
     var isPlayerReady = false;
     
-    // Tạo iframe YouTube (ẩn)
     var musicFrame = document.createElement('div');
     musicFrame.id = 'music-iframe';
     document.body.appendChild(musicFrame);
     
-    // Load YouTube IFrame API nếu chưa có
     if (!window.YT) {
       var tag = document.createElement('script');
       tag.src = 'https://www.youtube.com/iframe_api';
@@ -245,7 +276,6 @@
       firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
     }
     
-    // Khởi tạo player
     function initPlayer() {
       if (window.YT && window.YT.Player) {
         player = new YT.Player('music-iframe', {
@@ -266,7 +296,6 @@
               isPlayerReady = true;
               event.target.setVolume(60);
               
-              // Kiểm tra trạng thái đã lưu
               var savedMuteState = localStorage.getItem('noelMusicMuted');
               if (savedMuteState === 'true') {
                 event.target.mute();
@@ -289,14 +318,12 @@
       }
     }
     
-    // Callback khi API sẵn sàng
     if (window.YT && window.YT.Player) {
       initPlayer();
     } else {
       window.onYouTubeIframeAPIReady = initPlayer;
     }
     
-    // Xử lý nút bấm
     controlBtn.addEventListener('click', function() {
       if (!player || !isPlayerReady) {
         console.log('Player chưa sẵn sàng');
@@ -336,10 +363,8 @@
     initBackgroundMusic();
   }
   
-  // Cleanup khi trang bị đóng/reload
   window.addEventListener('beforeunload', function() {
     hideSnow();
   });
   
 })();
-
