@@ -1314,4 +1314,8 @@ audio {
 	.balloons {
 		background-size: 70px auto;
 	}
+	.balloons h2 {
+		width: 70px;
+    	font-size: 40px;
+	}
 }
