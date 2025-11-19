@@ -1,3 +1,11 @@
+const btn = document.querySelector(".btn-primary");
+btn.style.display = "none";
+
+setTimeout(() => {
+    btn.style.display = "inline-block"; // hoặc "block" tùy layout
+}, 1000);
+
+
 $(window).load(function(){
 	$('.loading').fadeOut('slow');
 	$('.container').fadeIn('slow');
