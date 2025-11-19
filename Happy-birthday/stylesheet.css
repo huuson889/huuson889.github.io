@@ -1312,9 +1312,9 @@ audio {
 		font-size: 16px;
 	}
 	.balloons {
-		width: 70px;
-    	height: 80px;
-		background-size: 70px 80px;
+		width: 50px;
+    	height: 90px;
+		background-size: 50px 90px;
 	}
 	.balloons h2 {
 		width: 70px;
