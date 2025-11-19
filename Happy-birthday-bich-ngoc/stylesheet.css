@@ -1315,12 +1315,12 @@ audio {
 		font-size: 16px;
 	}
 	.balloons {
-		width: 50px;
+		width: 55px;
     	height: 90px;
-		background-size: 50px 90px;
+		background-size: 55px 90px;
 	}
 	.balloons h2 {
-		width: 50px;
+		width: 55px;
     	font-size: 30px;
 	}
 	.cake-cover {
