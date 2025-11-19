@@ -20,7 +20,7 @@ $('document').ready(function(){
 			$('#b77').animate({top:240, left: vw+2.5*bw},500);
 		});
 	
-	$('#turn_on').hide().delay(2000).fadeIn('slow');
+	$('#turn_on').hide().delay(3000).fadeIn('slow');
 
 	$('#turn_on').click(function(){
 		$('#bulb_yellow').addClass('bulb-glow-yellow');
@@ -125,7 +125,7 @@ $('document').ready(function(){
 		loopSix();
 		loopSeven();
 		
-		$(this).fadeOut('slow').delay(8000).promise().done(function(){
+		$(this).fadeOut('slow').delay(9000).promise().done(function(){
 			$('#cake_fadein').fadeIn('slow');
 		});
 	});	
