@@ -194,10 +194,17 @@ function loopOne() {
 			$("p:nth-child("+i+")").fadeOut('slow').delay(800).promise().done(function(){
 			i=i+1;
 			$("p:nth-child("+i+")").fadeIn('slow').delay(5000);
-			if(i==50){
-				$("p:nth-child(49)").fadeOut('slow').promise().done(function () {
-					$('.cake').fadeIn('slow');
-				});
+			if(i==5){
+				$(".message")
+				    .animate(
+				        { marginTop: "320px" }, // di chuyển container xuống 320px
+				        800                     // thời gian animation (ms)
+				    )
+				    .promise()
+				    .done(function () {
+				        $('.cake').fadeIn('slow'); // show cake sau khi container đã di chuyển xong
+				    });
+
 				
 			}
 			else{
