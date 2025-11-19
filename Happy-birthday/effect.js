@@ -20,7 +20,7 @@ $('document').ready(function(){
 			$('#b77').animate({top:240, left: vw+2.5*bw},500);
 		});
 	
-	$('#turn_on').delay(1000).fadeIn('slow');
+	$('#turn_on').hide().delay(500).fadeIn('slow');
 
 	$('#turn_on').click(function(){
 		$('#bulb_yellow').addClass('bulb-glow-yellow');
