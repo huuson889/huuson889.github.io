@@ -219,9 +219,9 @@
       santa.style.top = santaData.y + 'px';
       
       // Khi Santa bay ra khỏi màn hình bên trái
-      if (santaData.x < -santaSize - 100) {
+      if (santaData.x < -santaSize - 200) {
         // Đặt lại vị trí bên phải
-        santaData.x = window.innerWidth + 20;
+        santaData.x = window.innerWidth + 70;
         // Random vị trí Y mới (ở giữa màn hình, tránh quá trên hoặc quá dưới)
         santaData.targetY = (screenHeight * 0.2) + Math.random() * (screenHeight * 0.6 - santaSize);
         // Random tốc độ bay
@@ -368,6 +368,7 @@
   });
   
 })();
+
 
 
 
