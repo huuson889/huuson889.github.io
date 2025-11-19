@@ -219,7 +219,7 @@
       santa.style.top = santaData.y + 'px';
       
       // Khi Santa bay ra khỏi màn hình bên trái
-      if (santaData.x < -santaSize - 20) {
+      if (santaData.x < -santaSize - 100) {
         // Đặt lại vị trí bên phải
         santaData.x = window.innerWidth + 20;
         // Random vị trí Y mới (ở giữa màn hình, tránh quá trên hoặc quá dưới)
@@ -368,6 +368,7 @@
   });
   
 })();
+
 
 
 
