@@ -189,7 +189,7 @@
     document.body.appendChild(santa);
     
     // Đặt vị trí ban đầu
-    santa.style.left = '0px';
+    santa.style.right = '0px';
     santa.style.top = '0px';
     
     function moveSanta() {
@@ -342,3 +342,4 @@
   });
   
 })();
+
