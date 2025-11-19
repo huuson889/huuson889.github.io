@@ -225,7 +225,7 @@
         // Random vị trí Y mới (ở giữa màn hình, tránh quá trên hoặc quá dưới)
         santaData.targetY = (screenHeight * 0.2) + Math.random() * (screenHeight * 0.6 - santaSize);
         // Random tốc độ bay
-        santaData.speed = 1.5 + Math.random() * 1.5;
+        santaData.speed = 0.5 + Math.random() * 0.5;
         // Random biên độ sóng
         santaData.waveAmplitude = 20 + Math.random() * 40;
         // Random tốc độ sóng
@@ -368,5 +368,6 @@
   });
   
 })();
+
 
 
