@@ -1307,12 +1307,9 @@ audio {
 
 
     /*controlling tablet width*/
-@media only screen and (max-width: 720px){
-	.container {
-		-webkit-transform: scale(0.9);
-	}
+@media only screen and (max-width: 540px){
 	.btn-primary {
-		
+		font-size: 16px;
 	}
 	.balloons {
 		background-size: 70px auto;
