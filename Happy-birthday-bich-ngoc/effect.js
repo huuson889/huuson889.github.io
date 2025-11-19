@@ -11,14 +11,14 @@ $('document').ready(function(){
 		$(window).resize(function(){
 			 vw = $(window).width()/2;
 			$('#b1,#b2,#b3,#b4,#b5,#b6,#b7,#b8').stop();
-			$('#b11').animate({top:240, left: vw-3.5*bw},500);
-			$('#b22').animate({top:240, left: vw-2.5*bw},500);
-			$('#b33').animate({top:240, left: vw-1.5*bw},500);
-			$('#b44').animate({top:240, left: vw-0.5*bw},500);
-			$('#b55').animate({top:240, left: vw+0.5*bw},500);
-			$('#b66').animate({top:240, left: vw+1.5*bw},500);
-			$('#b77').animate({top:240, left: vw+2.5*bw},500);
-			$('#b88').animate({top:240, left: vw+3.5*bw},500);
+			$('#b11').animate({top:240, left: vw-4*bw},500);
+			$('#b22').animate({top:240, left: vw-3*bw},500);
+			$('#b33').animate({top:240, left: vw-2*bw},500);
+			$('#b44').animate({top:240, left: vw-1*bw},500);
+			$('#b55').animate({top:240, left: vw},500);
+			$('#b66').animate({top:240, left: vw+1*bw},500);
+			$('#b77').animate({top:240, left: vw+2*bw},500);
+			$('#b88').animate({top:240, left: vw+3*bw},500);
 		});
 	
 	$('#turn_on').hide().delay(3000).fadeIn('slow');
@@ -176,14 +176,14 @@ function loopOne() {
 		$('#b7').attr('id','b77')
 		$('#b8').attr('id','b88')
 		
-		$('#b11').animate({top:240, left: vw-3.5*bw},500);
-		$('#b22').animate({top:240, left: vw-2.5*bw},500);
-		$('#b33').animate({top:240, left: vw-1.5*bw},500);
-		$('#b44').animate({top:240, left: vw-0.5*bw},500);
-		$('#b55').animate({top:240, left: vw+0.5*bw},500);
-		$('#b66').animate({top:240, left: vw+1.5*bw},500);
-		$('#b77').animate({top:240, left: vw+2.5*bw},500);
-		$('#b88').animate({top:240, left: vw+3.5*bw},500);
+		$('#b11').animate({top:240, left: vw-4*bw},500);
+		$('#b22').animate({top:240, left: vw-3*bw},500);
+		$('#b33').animate({top:240, left: vw-2*bw},500);
+		$('#b44').animate({top:240, left: vw-1*bw},500);
+		$('#b55').animate({top:240, left: vw},500);
+		$('#b66').animate({top:240, left: vw+1*bw},500);
+		$('#b77').animate({top:240, left: vw+2*bw},500);
+		$('#b88').animate({top:240, left: vw+3*bw},500);
 		
 		$('.balloons').css('opacity','0.9');
 		$('.balloons h2').fadeIn(3000);
