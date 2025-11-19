@@ -9,10 +9,6 @@ body {
 	overflow-x:hidden;
 }
 
-.nut-bam {
-	margin-bottom: 12%;
-}
-
 .container {
 	display: none;
 }
@@ -1293,6 +1289,9 @@ audio {
         font-weight: 700;
         color: #fff;
         background-color: #466baf;
+		padding: 20px;
+	    border-radius: 20px;
+	    font-size: 20px;
 }
     .btn-primary:hover,
     .btn-primary:focus,
