@@ -1,6 +1,6 @@
 $(window).load(function(){
-	$('.loading').fadeOut('fast');
-	$('.container').fadeIn('fast');
+	$('.loading').fadeOut('slow');
+	$('.container').fadeIn('slow');
 });
 $('document').ready(function(){
 		var vw;
@@ -175,7 +175,7 @@ $('document').ready(function(){
 	
 	$('#story').click(function(){
 		$(this).fadeOut('slow');
-		$('.cake').fadeOut('fast').promise().done(function(){
+		$('.cake').fadeOut('slow').promise().done(function(){
 			$('.message').fadeIn('slow');
 		});
 		
@@ -187,7 +187,7 @@ $('document').ready(function(){
 			$("p:nth-child("+i+")").fadeIn('slow').delay(5000);
 			if(i==50){
 				$("p:nth-child(49)").fadeOut('slow').promise().done(function () {
-					$('.cake').fadeIn('fast');
+					$('.cake').fadeIn('slow');
 				});
 				
 			}
