@@ -1313,8 +1313,8 @@ audio {
 	}
 	.balloons {
 		width: 70px;
-    	height: auto;
-		background-size: 70px auto;
+    	height: 80px;
+		background-size: 70px 80px;
 	}
 	.balloons h2 {
 		width: 70px;
