@@ -5,7 +5,8 @@ $(window).load(function(){
 $('document').ready(function(){
 		var vw;
 		const balloon = document.querySelector(".balloons");
-		const bw = balloon.offsetWidth;
+		const style = getComputedStyle(balloon);
+		const bw = parseFloat(style.width);
 		$(window).resize(function(){
 			 vw = $(window).width()/2;
 			$('#b1,#b2,#b3,#b4,#b5,#b6,#b7').stop();
