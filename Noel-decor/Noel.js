@@ -118,7 +118,7 @@
       var flake = document.createElement('div');
       flake.className = 'snow-flake';
       flake.id = 'dot' + i;
-      flake.innerHTML = '🧧';
+      flake.innerHTML = '✽';
       flake.style.zIndex = 9998 + i;
       document.body.appendChild(flake);
       
@@ -368,4 +368,5 @@
   });
   
 })();
+
 
