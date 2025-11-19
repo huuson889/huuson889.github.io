@@ -195,7 +195,7 @@
       y: 0,
       targetY: 0,
       speed: 0.75,
-      waveAmplitude: 30,
+      waveAmplitude: 15,
       waveSpeed: 0.03,
       wavePhase: 0
     };
@@ -227,7 +227,7 @@
         // Random tốc độ bay
         santaData.speed = 0.5 + Math.random() * 0.5;
         // Random biên độ sóng
-        santaData.waveAmplitude = 20 + Math.random() * 40;
+        santaData.waveAmplitude = 10 + Math.random() * 20;
         // Random tốc độ sóng
         santaData.waveSpeed = 0.02 + Math.random() * 0.03;
       }
@@ -368,6 +368,7 @@
   });
   
 })();
+
 
 
 
