@@ -1292,6 +1292,7 @@ audio {
 		padding: 20px;
 	    border-radius: 20px;
 	    font-size: 20px;
+		margin-bottom: 12%;
 }
     .btn-primary:hover,
     .btn-primary:focus,
