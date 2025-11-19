@@ -125,7 +125,7 @@ $('document').ready(function(){
 		loopSix();
 		loopSeven();
 		
-		$(this).fadeOut('slow').delay(9000).promise().done(function(){
+		$(this).fadeOut('slow').delay(12000).promise().done(function(){
 			$('#cake_fadein').fadeIn('slow');
 		});
 	});	
