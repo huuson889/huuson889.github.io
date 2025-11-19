@@ -1,10 +1,3 @@
-const btn = document.querySelector(".btn-primary");
-btn.style.display = "none";
-
-setTimeout(() => {
-    btn.style.display = "inline-block"; // hoặc "block" tùy layout
-}, 1000);
-
 
 $(window).load(function(){
 	$('.loading').fadeOut('slow');
@@ -26,6 +19,8 @@ $('document').ready(function(){
 			$('#b66').animate({top:240, left: vw+1.5*bw},500);
 			$('#b77').animate({top:240, left: vw+2.5*bw},500);
 		});
+	
+	$('#turn_on').delay(1000).fadeIn('slow');
 
 	$('#turn_on').click(function(){
 		$('#bulb_yellow').addClass('bulb-glow-yellow');
