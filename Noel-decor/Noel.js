@@ -194,7 +194,7 @@
       x: window.innerWidth,
       y: 0,
       targetY: 0,
-      speed: 2,
+      speed: 0.75,
       waveAmplitude: 30,
       waveSpeed: 0.03,
       wavePhase: 0
@@ -368,6 +368,7 @@
   });
   
 })();
+
 
 
 
