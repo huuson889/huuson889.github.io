@@ -174,6 +174,9 @@ function loopOne() {
 		$('#b55').animate({top:220, left: vw+0.5*bw},500);
 		$('#b66').animate({top:220, left: vw+1.5*bw},500);
 		$('#b77').animate({top:220, left: vw+2.5*bw},500);
+
+		$('#b1,#b4,#b5,#b7').addClass('balloons-rotate-behaviour-one');
+		$('#b2,#b3,#b6').addClass('balloons-rotate-behaviour-two');
 		
 		$('.balloons').css('opacity','0.9');
 		$('.balloons h2').fadeIn(3000);
