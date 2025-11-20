@@ -137,7 +137,7 @@ function loopOne() {
 	});	
 
 	$('#cake_fadein').click(function(){
-		$('.cake').hide().delay(500).fadeIn('slow');
+		$('.cake').hide().delay(2000).fadeIn('slow');
 		$(this).fadeOut('slow').delay(5000).promise().done(function(){
 			$('#light_candle').fadeIn('slow');
 		});
