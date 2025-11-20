@@ -149,13 +149,13 @@ function loopOne() {
 		$('#b6').attr('id','b66')
 		$('#b7').attr('id','b77')
 		
-		$('#b11').animate({top:220, left: vw-3.4*bw},500);
-		$('#b22').animate({top:220, left: vw-2.4*bw},500);
-		$('#b33').animate({top:220, left: vw-1.4*bw},500);
-		$('#b44').animate({top:220, left: vw-0.4*bw},500);
-		$('#b55').animate({top:220, left: vw+0.4*bw},500);
-		$('#b66').animate({top:220, left: vw+1.4*bw},500);
-		$('#b77').animate({top:220, left: vw+2.4*bw},500);
+		$('#b11').animate({top:220, left: vw-3.5*bw+10},500);
+		$('#b22').animate({top:220, left: vw-2.5*bw+6},500);
+		$('#b33').animate({top:220, left: vw-1.5*bw},500);
+		$('#b44').animate({top:220, left: vw-0.5*bw},500);
+		$('#b55').animate({top:220, left: vw+0.5*bw-6},500);
+		$('#b66').animate({top:220, left: vw+1.5*bw-8},500);
+		$('#b77').animate({top:220, left: vw+2.5*bw-10},500);
 
 		$('#b11,#b44,#b55,#b77').addClass('balloons-rotate-behaviour-one');
 		$('#b22,#b33,#b66').addClass('balloons-rotate-behaviour-two');
