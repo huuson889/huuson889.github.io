@@ -9,18 +9,18 @@ const style = getComputedStyle(balloon);
 const bw = parseFloat(style.width);  // Chiều rộng bóng
 
 $('document').ready(function(){
-		var vw;
-		$(window).resize(function(){
-			 vw = $(window).width()/2;
-			$('#b1,#b2,#b3,#b4,#b5,#b6,#b7').stop();
-			$('#b11').animate({top:220, left: vw-3.2*bw},500);
-			$('#b22').animate({top:220, left: vw-2.2*bw},500);
-			$('#b33').animate({top:220, left: vw-1.2*bw},500);
-			$('#b44').animate({top:220, left: vw-0.2*bw},500);
-			$('#b55').animate({top:220, left: vw+0.2*bw},500);
-			$('#b66').animate({top:220, left: vw+1.2*bw},500);
-			$('#b77').animate({top:220, left: vw+2.2*bw},500);
-		});
+		// var vw;
+		// $(window).resize(function(){
+		// 	 vw = $(window).width()/2;
+		// 	$('#b1,#b2,#b3,#b4,#b5,#b6,#b7').stop();
+		// 	$('#b11').animate({top:220, left: vw-3.2*bw},500);
+		// 	$('#b22').animate({top:220, left: vw-2.2*bw},500);
+		// 	$('#b33').animate({top:220, left: vw-1.2*bw},500);
+		// 	$('#b44').animate({top:220, left: vw-0.2*bw},500);
+		// 	$('#b55').animate({top:220, left: vw+0.2*bw},500);
+		// 	$('#b66').animate({top:220, left: vw+1.2*bw},500);
+		// 	$('#b77').animate({top:220, left: vw+2.2*bw},500);
+		// });
 	
 	$('#turn_on').hide().delay(5000).fadeIn('slow');
 
@@ -124,15 +124,6 @@ function loopOne() {
 
 	$('#balloons_flying').click(function(){
 		$('.balloon-border').animate({top:-500},8000);
-		//$('#b1,#b4,#b5,#b7').addClass('balloons-rotate-behaviour-one');
-		//$('#b2,#b3,#b6').addClass('balloons-rotate-behaviour-two');
-		// $('#b3').addClass('balloons-rotate-behaviour-two');
-		// $('#b4').addClass('balloons-rotate-behaviour-one');
-		// $('#b5').addClass('balloons-rotate-behaviour-one');
-		// $('#b6').addClass('balloons-rotate-behaviour-two');
-		// $('#b7').addClass('balloons-rotate-behaviour-one');
-		
-		
 		$(this).fadeOut('slow').delay(12000).promise().done(function(){
 			$('#cake_fadein').fadeIn('slow');
 		});
@@ -170,13 +161,13 @@ function loopOne() {
 		$('#b6').attr('id','b66')
 		$('#b7').attr('id','b77')
 		
-		$('#b11').animate({top:220, left: vw-3.5*bw},500);
-		$('#b22').animate({top:220, left: vw-2.5*bw},500);
-		$('#b33').animate({top:220, left: vw-1.5*bw},500);
-		$('#b44').animate({top:220, left: vw-0.5*bw},500);
-		$('#b55').animate({top:220, left: vw+0.5*bw},500);
-		$('#b66').animate({top:220, left: vw+1.5*bw},500);
-		$('#b77').animate({top:220, left: vw+2.5*bw},500);
+		$('#b11').animate({top:220, left: vw-3.4*bw},500);
+		$('#b22').animate({top:220, left: vw-2.4*bw},500);
+		$('#b33').animate({top:220, left: vw-1.4*bw},500);
+		$('#b44').animate({top:220, left: vw-0.4*bw},500);
+		$('#b55').animate({top:220, left: vw+0.4*bw},500);
+		$('#b66').animate({top:220, left: vw+1.4*bw},500);
+		$('#b77').animate({top:220, left: vw+2.4*bw},500);
 
 		$('#b11,#b44,#b55,#b77').addClass('balloons-rotate-behaviour-one');
 		$('#b22,#b33,#b66').addClass('balloons-rotate-behaviour-two');
