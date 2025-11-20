@@ -130,8 +130,8 @@ function loopOne() {
 
 	$('#balloons_flying').click(function(){
 		$('.balloon-border').animate({top:-500},8000);
-		$('#b1,#b4,#b5,#b7').addClass('balloons-rotate-behaviour-one');
-		$('#b2,#b3,#b6,#b8').addClass('balloons-rotate-behaviour-two');
+		// $('#b1,#b4,#b5,#b7').addClass('balloons-rotate-behaviour-one');
+		// $('#b2,#b3,#b6,#b8').addClass('balloons-rotate-behaviour-two');
 		// $('#b3').addClass('balloons-rotate-behaviour-two');
 		// $('#b4').addClass('balloons-rotate-behaviour-one');
 		// $('#b5').addClass('balloons-rotate-behaviour-one');
@@ -145,7 +145,7 @@ function loopOne() {
 	});	
 
 	$('#cake_fadein').click(function(){
-		$('.cake').fadeIn('slow');
+		$('.cake').hide().delay(3000).fadeIn('slow');
 		$(this).fadeOut('slow').delay(5000).promise().done(function(){
 			$('#light_candle').fadeIn('slow');
 		});
