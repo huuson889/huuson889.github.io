@@ -1269,7 +1269,7 @@ audio {
 	margin-top: 80px;
 }
 .message {
-	margin-top: 180px;
+	margin-top: 110px;
 	display: none;
 }
 .message p {
@@ -1321,6 +1321,6 @@ audio {
     	font-size: 35px;
 	}
 	.cake-cover {
-    	margin-top: 80px;
+    	margin-top: 20px;
 	}
 }
