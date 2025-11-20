@@ -130,8 +130,7 @@ function loopOne() {
 
 	$('#balloons_flying').click(function(){
 		$('.balloon-border').animate({top:-500},8000);
-		// $('#b1,#b4,#b5,#b7').addClass('balloons-rotate-behaviour-one');
-		// $('#b2,#b3,#b6,#b8').addClass('balloons-rotate-behaviour-two');
+		
 		// $('#b3').addClass('balloons-rotate-behaviour-two');
 		// $('#b4').addClass('balloons-rotate-behaviour-one');
 		// $('#b5').addClass('balloons-rotate-behaviour-one');
@@ -184,6 +183,9 @@ function loopOne() {
 		$('#b66').animate({top:220, left: vw+1*bw},500);
 		$('#b77').animate({top:220, left: vw+2*bw},500);
 		$('#b88').animate({top:220, left: vw+3*bw},500);
+
+		$('#b11,#b44,#b55,#b77').addClass('balloons-rotate-behaviour-one');
+		$('#b22,#b33,#b66,#b88').addClass('balloons-rotate-behaviour-two');
 		
 		$('.balloons').css('opacity','0.9');
 		$('.balloons h2').fadeIn(3000);
