@@ -1,5 +1,5 @@
 body {
-	/*background-color: #FFDAB9;	*/
+	/*background-color: #F5DCE0;	*/
 	background-color: #000;
 	-webkit-transition:background-color linear 5s;
 	-moz-transition:background-color linear 5s;
@@ -13,7 +13,7 @@ body {
 	display: none;
 }
 .peach {
-	background-color: #FFDAB9;
+	background-color: #F5DCE0;
 	
 }
 .peach-after {
@@ -26,90 +26,90 @@ body {
 
 @-webkit-keyframes peach_alive {
 	0%{
-		background-color: #FFDAB9;
+		background-color: #F5DCE0;
 	}
 	25%{
-		background-color: #FFE4B5;
+		background-color: #EFCFD4;
 	}
 	50%{
-		background-color: #FFDAB9;
+		background-color: #F5DCE0;
 	}
 	75%{
-		background-color: #FFEFD5;
+		background-color: #ECBDC4;
 	}
 	100%{
-		background-color: #FFDAB9;
+		background-color: #F5DCE0;
 	}
 }
 @-moz-keyframes peach_alive {
 	0%{
-		background-color: #FFDAB9;
+		background-color: #F5DCE0;
 	}
 	25%{
-		background-color: #FFE4B5;
+		background-color: #EFCFD4;
 	}
 	50%{
-		background-color: #FFDAB9;
+		background-color: #F5DCE0;
 	}
 	75%{
-		background-color: #FFEFD5;
+		background-color: #ECBDC4;
 	}
 	100%{
-		background-color: #FFDAB9;
+		background-color: #F5DCE0;
 	}
 }
 
 @-o-keyframes peach_alive {
 	0%{
-		background-color: #FFDAB9;
+		background-color: #F5DCE0;
 	}
 	25%{
-		background-color: #FFE4B5;
+		background-color: #EFCFD4;
 	}
 	50%{
-		background-color: #FFDAB9;
+		background-color: #F5DCE0;
 	}
 	75%{
-		background-color: #FFEFD5;
+		background-color: #ECBDC4;
 	}
 	100%{
-		background-color: #FFDAB9;
+		background-color: #F5DCE0;
 	}
 }
 
 @-ms-keyframes peach_alive {
 	0%{
-		background-color: #FFDAB9;
+		background-color: #F5DCE0;
 	}
 	25%{
-		background-color: #FFE4B5;
+		background-color: #EFCFD4;
 	}
 	50%{
-		background-color: #FFDAB9;
+		background-color: #F5DCE0;
 	}
 	75%{
-		background-color: #FFEFD5;
+		background-color: #ECBDC4;
 	}
 	100%{
-		background-color: #FFDAB9;
+		background-color: #F5DCE0;
 	}
 }
 
 @keyframes peach_alive {
 	0%{
-		background-color: #FFDAB9;
+		background-color: #F5DCE0;
 	}
 	25%{
-		background-color: #FFE4B5;
+		background-color: #EFCFD4;
 	}
 	50%{
-		background-color: #FFDAB9;
+		background-color: #F5DCE0;
 	}
 	75%{
-		background-color: #FFEFD5;
+		background-color: #ECBDC4;
 	}
 	100%{
-		background-color: #FFDAB9;
+		background-color: #F5DCE0;
 	}
 }
 
