@@ -157,7 +157,8 @@ function loopOne() {
 		const balloon = document.querySelector(".balloons");
 		const style = getComputedStyle(balloon);
 		const bw = parseFloat(style.width);
-		
+
+	
 		$('#b1,#b2,#b3,#b4,#b5,#b6,#b7').stop();
 		$('#b1').attr('id','b11');
 		$('#b2').attr('id','b22')
@@ -175,8 +176,8 @@ function loopOne() {
 		$('#b66').animate({top:220, left: vw+1.5*bw},500);
 		$('#b77').animate({top:220, left: vw+2.5*bw},500);
 
-		$('#b1,#b4,#b5,#b7').addClass('balloons-rotate-behaviour-one');
-		$('#b2,#b3,#b6').addClass('balloons-rotate-behaviour-two');
+		$('#b11,#b44,#b55,#b77').addClass('balloons-rotate-behaviour-one');
+		$('#b22,#b33,#b66').addClass('balloons-rotate-behaviour-two');
 		
 		$('.balloons').css('opacity','0.9');
 		$('.balloons h2').fadeIn(3000);
